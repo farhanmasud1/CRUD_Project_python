@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}
+Farhan Django
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to Farhan Masud Nayem</h1>
+
+<h2>
+    {% if form.instance.pk %}
+    Edit App
+    {% else %}
+    Create App
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" class="form">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+    <a href="{% url 'app_list' %}">Back to the app_list</a>
+</h2>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}
+Farhan Django
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4">Welcome to Farhan Masud Nayem</h1>
+<a class="btn btn-primary" href="{% url 'app_create' %}">Create a app</a>
+<div class="container row gap-3 mt-4">
+    {% for app in apps %}
+    <div class="card" style="width: 18rem;">
+        <img src="{{app.photo.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{app.user.username}}</h5>
+            <p class="card-text">{{app.text}}</p>
+            <a href="{% url 'app_edit' app.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'app_delete' app.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
